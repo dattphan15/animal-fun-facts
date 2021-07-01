@@ -2,6 +2,7 @@ import { animals } from './animals';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// empty string evaluates to false
 const title = "";
 
 const background = (
@@ -11,6 +12,8 @@ const background = (
     src="/images/ocean.jpg"
   />
 );
+
+const showBackground = true;
 
 let images = [];
 
@@ -42,10 +45,12 @@ function displayFact(e) {
 const animalFacts = (
   <div>
     <h1>
-      { title === "" ? 'Click an animal for a fun fact!' : title }
+      {/* render left side if true, else render right side of || */}
+      { title || 'Click an animal for a fun fact' }
     </h1>
     <p id="fact"></p>
-    { background }
+    {/* if showBackground is true, render background, if false, render showBackground */}
+    { showBackground && background }
     <div className="animals">
       { images }
     </div>
